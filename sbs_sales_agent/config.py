@@ -45,6 +45,7 @@ class AgentSettings:
     agentmail_sales_inbox: str = "neilfox@agentmail.to"
     agentmail_precheck_feedback_inbox: str = "jefferywacaster@agentmail.to"
     agentmail_webhook_secret: str = ""
+    agentmail_forward_token: str = ""
 
     local_mail_api_url: str = "http://192.168.100.7:8081"
     local_mail_api_token: str = ""
@@ -119,6 +120,7 @@ class AgentSettings:
             "SBS_AGENT_AGENTMAIL_PRECHECK_INBOX", s.agentmail_precheck_feedback_inbox
         )
         s.agentmail_webhook_secret = os.getenv("SBS_AGENT_AGENTMAIL_WEBHOOK_SECRET", s.agentmail_webhook_secret)
+        s.agentmail_forward_token = os.getenv("SBS_AGENT_AGENTMAIL_FORWARD_TOKEN", s.agentmail_forward_token)
 
         s.local_mail_api_url = os.getenv("SBS_AGENT_LOCAL_MAIL_API_URL", s.local_mail_api_url)
         s.local_mail_api_token = os.getenv("SBS_AGENT_LOCAL_MAIL_API_TOKEN", s.local_mail_api_token)

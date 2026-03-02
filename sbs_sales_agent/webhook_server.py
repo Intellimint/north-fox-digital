@@ -28,6 +28,11 @@ class _WebhookHandler(BaseHTTPRequestHandler):
     def do_POST(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         if parsed.path == "/v1/webhooks/agentmail":
+            if self.settings.agentmail_forward_token:
+                provided = self.headers.get("x-webhook-forward-token", "")
+                if not provided or provided != self.settings.agentmail_forward_token:
+                    self._write_json(401, {"ok": False, "reason": "invalid_forward_token"})
+                    return
             length = int(self.headers.get("Content-Length", "0") or 0)
             raw = self.rfile.read(length).decode("utf-8") if length else "{}"
             result = process_agentmail_webhook(
