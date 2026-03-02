@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: sbs-agent-webhooks
+    env: python
+    plan: starter
+    autoDeploy: false
+    buildCommand: pip install -e .
+    startCommand: sh -c 'PYTHONPATH=. python -m sbs_sales_agent.cli run-webhook-server --host 0.0.0.0 --port ${PORT:-8090}'
+    healthCheckPath: /healthz
+    disk:
+      name: sbs-agent-data
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: SBS_AGENT_DRY_RUN_DEFAULT
+        value: "false"
+      - key: SBS_AGENT_TEST_MODE
+        value: "false"
+      - key: SBS_AGENT_WEBHOOK_ENABLE_DAEMON
+        value: "true"
+      - key: SBS_AGENT_DAEMON_POLL_EVERY_SECONDS
+        value: "60"
+      - key: SBS_AGENT_DAEMON_RECONCILE_EVERY_SECONDS
+        value: "900"
+      - key: SBS_AGENT_OPS_DB_PATH
+        value: /var/data/sbs_agent_ops.db

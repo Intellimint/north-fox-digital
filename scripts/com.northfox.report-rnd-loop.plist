@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.northfox.report-rnd-loop</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/satoshinakamoto/Documents/The Experiment/scripts/run_report_rnd_loop_once.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/satoshinakamoto/Documents/The Experiment</string>
+  <key>KeepAlive</key>
+  <true/>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/satoshinakamoto/Documents/The Experiment/logs/overnight_reports/daemon/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/satoshinakamoto/Documents/The Experiment/logs/overnight_reports/daemon/launchd.err.log</string>
+</dict>
+</plist>

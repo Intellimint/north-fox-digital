@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+logs/
+tmp/
+data/
+openclaw/
+sbs_ingest.egg-info/
+.env
+.env.*
+!.env.agent.example

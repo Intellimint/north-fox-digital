@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sbs-ingest"
+version = "0.1.0"
+description = "SBA SBS bulk downloader and database loader"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx[http2]>=0.27.0",
+  "email-validator>=2.2.0",
+  "ijson>=3.2.3",
+  "psycopg[binary]>=3.1.19",
+]
+
+[project.optional-dependencies]
+speed = [
+  "orjson>=3.10.0",
+]
+
+[tool.setuptools]
+packages = [
+  "sbs_ingest",
+  "sbs_sales_agent",
+  "sbs_sales_agent.offers",
+  "sbs_sales_agent.deliverability",
+  "sbs_sales_agent.integrations",
+  "sbs_sales_agent.inbound",
+  "sbs_sales_agent.payments",
+  "sbs_sales_agent.fulfillment",
+  "sbs_sales_agent.surveys",
+  "sbs_sales_agent.learning",
+  "sbs_sales_agent.research_loop",
+]
+
+[tool.setuptools.package-data]
+sbs_ingest = ["migrations/*.sql"]
+sbs_sales_agent = ["migrations/*.sql", "templates/*"]
